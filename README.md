@@ -6,15 +6,17 @@
 | Course       | Spring                     |
 | Assignment # | Project                    |
 
-# Assignment Overview
-The Delivery System is a Java-based application designed for a collaborative environment involving 
-a collection of retailers and local drivers to efficiently manage the delivery of products to 
-customer destinations. This system allowsshops to create delivery requests which are then broadcasted
-to all subscribed drivers, ensuring that delivery operations are streamlined and efficient.
+# Project Overview
+The project develops a route optimization system that integrates Java and Python to efficiently compute and visualize routes within a graph representing California's road network. The Java component features a `GraphBuilder` that uses the Builder pattern for flexible graph construction and a `RoadNetworkLoader` for parsing data from the `roadNet-CA.txt` file into a usable graph format. Route calculation is handled through `DijkstraStrategy` and `BellmanFordStrategy`, employing the Strategy pattern to enable algorithm interchangeability based on performance needs. The system also includes a `RouteCalculationExecutor` to manage route computations concurrently via a thread pool, and a `RouteOptimizationFacade` that simplifies backend interactions for clients.
+
+On the Python side, the project uses `NetworkX` and `Matplotlib` for visualizing routes and graph structures, enhancing understanding and analysis of the routing algorithms’ effectiveness. This dual-component approach not only ensures robust processing and route optimization across a complex network but also provides critical visual insights useful for debugging, analysis, and demonstrating algorithm efficacy in practical scenarios. This integrated system aims to optimize route planning in urban planning, logistics, and transportation management, offering significant improvements in route efficiency and resource management.
 
 
 # GitHub Repository Link:
-https://github.com/mkljngd/CS665-Assignment-4
+https://github.com/mkljngd/CS665-Project
+
+# Dataset Link
+https://snap.stanford.edu/data/roadNet-CA.html
 # Implementation Description 
 
 
