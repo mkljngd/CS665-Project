@@ -1,3 +1,11 @@
+/**
+ * Name: Mukul Jangid
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: BellmanFordStrategy.java
+ * Description: Implements the Bellman-Ford algorithm to calculate the shortest path in a graph.
+ */
+
 package edu.bu.met.cs665;
 
 import java.util.List;

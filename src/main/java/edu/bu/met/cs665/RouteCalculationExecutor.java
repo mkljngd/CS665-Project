@@ -1,3 +1,12 @@
+/**
+ * Name: Mukul Jangid
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: RouteCalculationExecutor.java
+ * Description: Manages the execution of route calculations using different strategies on a 
+ * multi-threaded environment.
+ */
+
 package edu.bu.met.cs665;
 
 import java.io.BufferedWriter;
@@ -19,11 +28,25 @@ public class RouteCalculationExecutor {
   private ExecutorService executor;
   private Graph<Integer, DefaultWeightedEdge> graph;
 
+  /**
+   * Constructs a RouteCalculationExecutor with a graph and specified thread pool size.
+   *
+   * @param graph Graph to calculate routes on.
+   * @param threadCount Number of threads in the pool.
+   */
   public RouteCalculationExecutor(Graph<Integer, DefaultWeightedEdge> graph, int threadCount) {
     this.graph = graph;
     this.executor = Executors.newFixedThreadPool(threadCount);
   }
 
+  /**
+   * Calculates the shortest path between two vertices using a given strategy, logging and storing
+   * the result.
+   *
+   * @param startVertex Start vertex of the route.
+   * @param endVertex End vertex of the route.
+   * @param strategy Strategy for pathfinding.
+   */
   public void executeRouteCalculation(int startVertex, int endVertex, RouteStrategy strategy) {
     executor.submit(
         () -> {
@@ -56,6 +79,7 @@ public class RouteCalculationExecutor {
     }
   }
 
+  /** Terminates the executor, ensuring active tasks complete before shutdown. */
   public void shutdown() {
     executor.shutdown();
     try {

@@ -1,3 +1,12 @@
+/**
+ * Name: Mukul Jangid
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: RouteOptimizationApp.java
+ * Description: Entry point for a console application that allows users to calculate routes 
+ * using specified algorithms.
+ */
+
 package edu.bu.met.cs665;
 
 import java.util.Scanner;
@@ -10,6 +19,11 @@ public class RouteOptimizationApp {
     facade = new RouteOptimizationFacade();
   }
 
+  /**
+   * Returns the singleton instance of RouteOptimizationApp, creating it if necessary.
+   *
+   * @return Singleton instance.
+   */
   public static synchronized RouteOptimizationApp getInstance() {
     if (instance == null) {
       instance = new RouteOptimizationApp();
@@ -17,6 +31,9 @@ public class RouteOptimizationApp {
     return instance;
   }
 
+  /**
+   * Operates the application interface, processing user inputs for route calculations until 'exit'.
+   */
   public void run() {
     try (Scanner scanner = new Scanner(System.in)) {
       System.out.println(

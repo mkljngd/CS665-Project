@@ -1,7 +1,11 @@
 /**
- * Name: Mukul Jangid Course: CS-665 Software Designs & Patterns Date: 04/12/2024 File Name:
- * DriverNotificationTest.java Description: Test cases for the assignment.
+ * Name: Mukul Jangid 
+ * Course: CS-665 Software Designs & Patterns 
+ * Date: 04/12/2024 
+ * File Name: DriverNotificationTest.java 
+ * Description: Test cases for the project.
  */
+
 package edu.bu.met.cs665;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +19,6 @@ import java.util.List;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 public class RouteOptimizationTests {
 
