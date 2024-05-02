@@ -11,6 +11,7 @@ package edu.bu.met.cs665;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
 import java.io.StringReader;
@@ -61,18 +62,12 @@ public class RouteOptimizationTests {
   }
 
   @Test
-  public void testRouteCalculationExecution() {
-    // Assuming that there is a method to check output in the logger or files
+  public void testGraphSelfLoops() {
     GraphBuilder<Integer, DefaultWeightedEdge> builder = new GraphBuilder<>();
-    builder.addVertex(1).addVertex(2).addEdge(1, 2, 1.0);
+    builder.addVertex(1).addEdge(1, 1, 3.0);
     Graph<Integer, DefaultWeightedEdge> graph = builder.build();
-    RouteCalculationExecutor executor = new RouteCalculationExecutor(graph, 1);
-    DijkstraStrategy strategy = new DijkstraStrategy();
-
-    executor.executeRouteCalculation(1, 2, strategy);
-    executor.shutdown();
-
-    // You would need to verify the log file or output stream here to check the result
+    assertTrue(graph.containsEdge(1, 1));
+    assertEquals(3.0, graph.getEdgeWeight(graph.getEdge(1, 1)), 0.01);
   }
 
   @Test
@@ -92,5 +87,47 @@ public class RouteOptimizationTests {
     assertTrue(graph.containsEdge(2, 3));
     assertEquals(1.0, graph.getEdgeWeight(graph.getEdge(1, 2)), 0.01);
     assertEquals(2.0, graph.getEdgeWeight(graph.getEdge(2, 3)), 0.01);
+  }
+
+  @Test
+  public void testDijkstraNoPath() {
+    GraphBuilder<Integer, DefaultWeightedEdge> builder = new GraphBuilder<>();
+    builder.addVertex(1).addVertex(2);
+    Graph<Integer, DefaultWeightedEdge> graph = builder.build();
+    DijkstraStrategy strategy = new DijkstraStrategy();
+
+    List<Integer> path = strategy.calculateRoute(graph, 1, 2);
+    assertTrue("Path should be empty when no direct route exists", path.isEmpty());
+  }
+
+  @Test
+  public void testBellmanFordNoPath() {
+    GraphBuilder<Integer, DefaultWeightedEdge> builder = new GraphBuilder<>();
+    builder.addVertex(1).addVertex(2);
+    Graph<Integer, DefaultWeightedEdge> graph = builder.build();
+    BellmanFordStrategy strategy = new BellmanFordStrategy();
+
+    List<Integer> path = strategy.calculateRoute(graph, 1, 2);
+    assertTrue("Path should be empty when no direct route exists", path.isEmpty());
+  }
+
+  @Test
+  public void testGraphLoadingErrorHandling() throws Exception {
+    String data = "1\t2\n2\t3\tcorrupt";
+    BufferedReader reader = new BufferedReader(new StringReader(data));
+    try {
+      Graph<Integer, DefaultWeightedEdge> graph = RoadNetworkLoader.loadGraph(reader);
+      fail("Should have thrown an exception due to corrupted data.");
+    } catch (NumberFormatException e) {
+      assertNotNull(e);
+    }
+  }
+
+  @Test
+  public void testEmptyGraph() {
+    GraphBuilder<Integer, DefaultWeightedEdge> builder = new GraphBuilder<>();
+    Graph<Integer, DefaultWeightedEdge> graph = builder.build();
+    assertTrue(graph.vertexSet().isEmpty());
+    assertTrue(graph.edgeSet().isEmpty());
   }
 }
