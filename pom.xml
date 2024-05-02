@@ -1,19 +1,27 @@
-<!-- This is the root element of the pom.xml file, which defines the project information and specifies the location of the POM schema. The "xmlns" attribute specifies the default namespace for the elements in the file, while "xsi:schemaLocation" provides the location of the schema that the file conforms to. -->
+<!-- This is the root element of the pom.xml file, which defines the project information and
+specifies the location of the POM schema. The "xmlns" attribute specifies the default namespace for
+the elements in the file, while "xsi:schemaLocation" provides the location of the schema that the
+file conforms to. -->
 <project
-        xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- This line specifies the version of the Project Object Model (POM) for Maven. It indicates that the project is using version 4.0.0 of the POM. -->
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- This line specifies the version of the Project Object Model (POM) for Maven. It indicates
+    that the project is using version 4.0.0 of the POM. -->
     <modelVersion>4.0.0</modelVersion>
-    <!-- This is the Maven groupId of the project, which identifies the project uniquely across all projects. -->
+    <!-- This is the Maven groupId of the project, which identifies the project uniquely across all
+    projects. -->
     <groupId>edu.bu.cs665</groupId>
-    <!-- This specifies the name of the project's artifact (e.g., the compiled output file or library) that will be created when the project is built. -->
+    <!-- This specifies the name of the project's artifact (e.g., the compiled output file or
+    library) that will be created when the project is built. -->
     <artifactId>JavaProjectTemplate</artifactId>
     <!-- The version of the project -->
     <version>1.0-SNAPSHOT</version>
-    <!-- This line specifies the packaging type of the project, which in this case is "jar" (Java Archive), meaning that the project will be packaged as a JAR file. -->
+    <!-- This line specifies the packaging type of the project, which in this case is "jar" (Java
+    Archive), meaning that the project will be packaged as a JAR file. -->
     <packaging>jar</packaging>
-    <!-- This line sets the name of the Maven project to "JavaProjectTemplate". It can be used to give the project a more descriptive name than just the artifact ID. -->
+    <!-- This line sets the name of the Maven project to "JavaProjectTemplate". It can be used to
+    give the project a more descriptive name than just the artifact ID. -->
     <name>JavaProjectTemplate</name>
     <!-- Specifies the URL where information about the project can be found -->
     <url>http://maven.apache.org</url>
@@ -89,7 +97,8 @@
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>4.1.3</version>
                 <dependencies>
-                    <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
+                    <!-- overwrite dependency on spotbugs if you want to specify the version of
+                    spotbugs -->
                     <dependency>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs</artifactId>
@@ -106,9 +115,16 @@
                 </configuration>
             </plugin>
             <plugin>
-                <!-- org.codehaus.mojo is a group ID that is used for a collection of Maven plugins developed by the Codehaus Mojo project. These plugins are intended to make it easier to perform various tasks during the build process, such as deploying artifacts, running scripts, and generating documentation.
-                Codehaus was a community-driven organization that provided a platform for open-source software development, and the Mojo project was one of many projects hosted by Codehaus. Although Codehaus is no longer active, the Codehaus Mojo plugins continue to be maintained and updated by the community.
-                Some popular Codehaus Mojo plugins include build-helper-maven-plugin, exec-maven-plugin, javadoc-maven-plugin, and versions-maven-plugin. -->
+                <!-- org.codehaus.mojo is a group ID that is used for a collection of Maven plugins
+                developed by the Codehaus Mojo project. These plugins are intended to make it easier
+                to perform various tasks during the build process, such as deploying artifacts,
+                running scripts, and generating documentation.
+                Codehaus was a community-driven organization that provided a platform for open-source software
+                development, and the Mojo project was one of many projects hosted by Codehaus.
+                Although Codehaus is no longer active, the Codehaus Mojo plugins continue to be
+                maintained and updated by the community.
+                Some popular Codehaus Mojo plugins include build-helper-maven-plugin, exec-maven-plugin,
+                javadoc-maven-plugin, and versions-maven-plugin. -->
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.3</version>
@@ -191,14 +207,6 @@
             <artifactId>jgraphx</artifactId>
             <version>4.2.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>5.11.0</version>
-            <scope>test</scope>
-        </dependency>
-
-
 
 
     </dependencies>
