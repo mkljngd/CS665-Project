@@ -3,6 +3,9 @@ package edu.bu.met.cs665;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,7 +22,7 @@ public class RouteCalculationExecutor {
 
     public RouteCalculationExecutor(Graph<Integer, DefaultWeightedEdge> graph, int threadCount) {
         this.graph = graph;
-        this.executor = Executors.newFixedThreadPool(threadCount); // Creating a fixed thread pool
+        this.executor = Executors.newFixedThreadPool(threadCount);
     }
 
     public void executeRouteCalculation(int startVertex, int endVertex, RouteStrategy strategy) {
@@ -27,7 +30,9 @@ public class RouteCalculationExecutor {
             try {
                 List<Integer> route = strategy.calculateRoute(graph, startVertex, endVertex);
                 if (route != null && !route.isEmpty()) {
-                    LOGGER.info("Route from " + startVertex + " to " + endVertex + ":\n" + formatRoute(route));
+                    String formattedRoute = formatRoute(route);
+                    LOGGER.info("Route from " + startVertex + " to " + endVertex + ":\n" + formattedRoute);
+                    appendRouteToFile(formattedRoute);
                 } else {
                     LOGGER.info("No available route from " + startVertex + " to " + endVertex);
                 }
@@ -38,7 +43,19 @@ public class RouteCalculationExecutor {
     }
 
     private String formatRoute(List<Integer> route) {
-        return "Path: " + route.stream().map(Object::toString).collect(Collectors.joining(" -> "));
+        return "Path: " +
+                route.stream()
+                        .map(Object::toString)
+                        .collect(Collectors.joining(" -> "));
+    }
+
+    private void appendRouteToFile(String route) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true))) {
+            writer.write(route);
+            writer.newLine();
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to write to file", e);
+        }
     }
 
     public void shutdown() {

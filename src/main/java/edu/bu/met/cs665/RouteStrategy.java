@@ -6,7 +6,11 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import java.util.List;
 
 public interface RouteStrategy {
-    List<Integer> calculateRoute(Graph<Integer, DefaultWeightedEdge> graph, int startVertex, int endVertex);
+    List<Integer> calculateRoute(
+            Graph<Integer, DefaultWeightedEdge> graph,
+            int startVertex,
+            int endVertex
+    );
 }
 
 
