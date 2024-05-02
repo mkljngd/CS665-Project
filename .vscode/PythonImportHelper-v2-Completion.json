@@ -1,0 +1,74 @@
+[
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "networkx",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "networkx",
+        "description": "networkx",
+        "detail": "networkx",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "parse_graph",
+        "kind": 2,
+        "importPath": "visualize_graph",
+        "description": "visualize_graph",
+        "peekOfCode": "def parse_graph(file_path):\n    \"\"\"\n    Parses a tab-delimited graph file into a dictionary where each key is a node and its value is a list of connected nodes.\n    :param file_path: str - Path to the graph file.\n    :return: dict - A dictionary representing the adjacency list of the graph.\n    \"\"\"\n    graph = {}\n    with open(file_path, \"r\") as file:\n        reader = csv.reader(file, delimiter=\"\\t\")\n        next(reader)  # Skip the header line",
+        "detail": "visualize_graph",
+        "documentation": {}
+    },
+    {
+        "label": "extract_nodes",
+        "kind": 2,
+        "importPath": "visualize_graph",
+        "description": "visualize_graph",
+        "peekOfCode": "def extract_nodes(path):\n    \"\"\"\n    Extracts nodes from a path string formatted as \"Path: node1 -> node2 -> ...\".\n    :param path: str - Path string to extract nodes from.\n    :return: list - List of nodes as strings.\n    \"\"\"\n    return path.strip(\"Path: \").split(\" -> \")\ndef get_subgraph_and_connections(graph, nodes):\n    \"\"\"\n    Extracts a subgraph and additional connections from a graph based on a list of nodes.",
+        "detail": "visualize_graph",
+        "documentation": {}
+    },
+    {
+        "label": "get_subgraph_and_connections",
+        "kind": 2,
+        "importPath": "visualize_graph",
+        "description": "visualize_graph",
+        "peekOfCode": "def get_subgraph_and_connections(graph, nodes):\n    \"\"\"\n    Extracts a subgraph and additional connections from a graph based on a list of nodes.\n    :param graph: dict - The full graph represented as an adjacency list.\n    :param nodes: list - List of nodes for which the subgraph is extracted.\n    :return: tuple - A tuple containing two dictionaries: subgraph and additional_edges.\n    \"\"\"\n    subgraph = {}\n    additional_edges = {}\n    for node in nodes:",
+        "detail": "visualize_graph",
+        "documentation": {}
+    },
+    {
+        "label": "print_graph",
+        "kind": 2,
+        "importPath": "visualize_graph",
+        "description": "visualize_graph",
+        "peekOfCode": "def print_graph(subgraph):\n    \"\"\"\n    Prints the subgraph as adjacency list.\n    :param subgraph: dict - The subgraph to print.\n    \"\"\"\n    for from_node, to_nodes in subgraph.items():\n        for to_node in to_nodes:\n            print(f\"{from_node} -> {to_node}\")\ndef visualize_subgraph(subgraph, additional_edges, nodes_in_path, simplify=False):\n    \"\"\"",
+        "detail": "visualize_graph",
+        "documentation": {}
+    },
+    {
+        "label": "visualize_subgraph",
+        "kind": 2,
+        "importPath": "visualize_graph",
+        "description": "visualize_graph",
+        "peekOfCode": "def visualize_subgraph(subgraph, additional_edges, nodes_in_path, simplify=False):\n    \"\"\"\n    Visualizes the subgraph using NetworkX and Matplotlib, highlighting the main path and additional edges differently.\n    :param subgraph: dict - The subgraph to visualize.\n    :param additional_edges: dict - Additional edges to be visualized differently.\n    :param nodes_in_path: list - List of nodes in the main path to highlight.\n    :param simplify: bool - Whether to simplify the visualization (default is False).\n    \"\"\"\n    G = nx.DiGraph()\n    # Add main path edges with unidirectional arrows",
+        "detail": "visualize_graph",
+        "documentation": {}
+    }
+]

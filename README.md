@@ -2,61 +2,46 @@
 | CS-665       | Software Design & Patterns |
 |--------------|----------------------------|
 | Name         | Mukul Jangid               |
-| Date         | 04/12/2024                 |
+| Date         | 05/02/2024                 |
 | Course       | Spring                     |
-| Assignment # | 6                          |
+| Assignment # | Project                    |
 
 # Assignment Overview
 The Delivery System is a Java-based application designed for a collaborative environment involving 
 a collection of retailers and local drivers to efficiently manage the delivery of products to 
 customer destinations. This system allowsshops to create delivery requests which are then broadcasted
- to all subscribed drivers, ensuring that delivery operations are streamlined and efficient.
+to all subscribed drivers, ensuring that delivery operations are streamlined and efficient.
 
 
 # GitHub Repository Link:
-https://github.com/mkljngd/CS665-Assignment-6
+https://github.com/mkljngd/CS665-Assignment-4
+# Implementation Description 
 
 
-# Improvements
-
-### 1. **Implementation of Observer and Observable Interfaces**
-
-**Improvement:** Both `Driver` and `Shop` were updated to adhere to formally defined `Observer` and `Observable` interfaces. `Driver` implements the `Observer` interface, responding to updates (notifications about delivery requests), while `Shop` implements the `Observable` interface, managing a list of observers (drivers) and notifying them of changes.
-
-**Significance:** This formal adherence to the Observer design pattern through explicit interfaces enhances the decoupling between the shop (subject) and drivers (observers). This separation of concerns ensures that each component only knows as much as it needs to about the other, making the codebase easier to manage, extend, and maintain. It also makes the interaction between components predictable and organized, facilitating easier testing and debugging.
-
-### 2. **Direct Notification from Shop to Drivers**
-
-**Improvement:** The `Shop` class is now an `Observable`, directly managing its list of `Observers` (drivers). This change allows the `Shop` to notify `Driver` instances directly about new delivery requests, eliminating the need for an intermediary like the `NotificationService` in direct notification scenarios.
-
-**Significance:** This modification aligns the software design more closely with real-world business processes where a shop would directly contact drivers for deliveries. It simplifies the flow of information and reduces the complexity of the system, making it easier to understand and maintain. Moreover, it allows for a more natural extension in scenarios where different types of notifications are needed, as `Shop` now fully controls its notification logic.
-
-### 3. **Introduction of Proper Logging**
-
-**Improvement:** The system now uses Java’s built-in logging framework (`java.util.logging`) instead of `System.out.println()` for outputting information. This change introduces different levels of logging (INFO, WARNING, etc.), which can be configured to show or hide based on the deployment environment (development, testing, production).
-
-**Significance:** Using a logging framework provides a more flexible and powerful way to handle output, facilitating easier debugging and monitoring of the system’s operation. Logs can be directed to various outputs (like files, network, console) and can be formatted or filtered according to the needs of the system administrators or developers. This makes the application more suitable for professional environments and practical usage.
-
-### 4. **Error Handling and Validation**
-
-**Improvement:** Input validation and error handling were added to ensure that null references or invalid states do not lead to runtime errors. For instance, the `subscribe` method in both `Shop` and `NotificationService` now checks for null observers before adding them to the observer list.
-
-**Significance:** Robust error handling prevents the application from crashing unexpectedly and helps maintain stable operation under various conditions. By checking for invalid inputs, the system guards against corrupt data states and provides more informative error messages, improving the developer’s ability to diagnose issues and the user’s understanding of what went wrong.
-
-### 5. **Maintaining Notification Service for Future Extensibility**
-
-**Improvement:** Although the `NotificationService` is somewhat redundant in the current scenario, keeping it allows for future extensions where different types of observables or more complex notification systems might be required.
-
-**Significance:** This foresight in design ensures that the system can evolve without major rewrites. If the business requirements change or expand to include different types of notifications (like promotions or alerts separate from delivery requests), the `NotificationService` can be enhanced or repurposed effectively.
+## Flexibility
+- **Builder Pattern (`GraphBuilder`)**: Allows easy extension for different types of nodes or edges, supporting step-by-step graph construction.
+- **Strategy Pattern (`RouteStrategy`)**: Facilitates the addition of new routing algorithms by implementing the `RouteStrategy` interface, enhancing algorithm interchangeability without modifying existing code.
+- **Facade Pattern (`RouteOptimizationFacade`)**: Simplifies backend modifications (like adding new components) without changing how clients interact with the system.
 
 
+## Simplicity and Understandability
+- **Facade Pattern**: Offers a simple interface to complex systems, improving the readability and maintainability of client interactions.
+- **Singleton Pattern (`RouteOptimizationApp`)**: Ensures a single access point, simplifying management and preventing resource conflicts.
+- **Clear Responsibilities**: Each class has a defined role, enhancing the code's readability and ease of maintenance.
 
 
-## Design Pattern
-The application implements the Observer Design Pattern, which is evident in the relationship between the 
-NotificationService (subject) and Drivers (observers). This pattern provides a robust framework where subjects notify 
-observers about state changes without the observers needing to poll the subjects for updates. The use of this pattern
-enhances the system's flexibility and extensibility, as new observers can be conveniently added or removed.
+## Avoidance of Duplicated Code
+- **Strategy Pattern**: Abstracts common functionalities in routing algorithms, preventing code duplication across implementations.
+- **Builder Pattern (`GraphBuilder`)**: Centralizes graph construction tasks, eliminating repetitive code.
+- **Importance**: Reduces bugs, enhances readability, and simplifies future modifications.
+
+
+## Design Patterns
+- **Facade Pattern**: Used to decouple system complexity from user interactions, making the system user-friendly.
+- **Singleton Pattern**: Controls application lifecycle and resource management, crucial for applications with significant shared resources.
+- **Builder Pattern**: Manages complex graph constructions incrementally, improving code manageability.
+- **Strategy Pattern**: Allows flexibility in swapping routing algorithms, facilitating easy system extension.
+- **Thread Pool Pattern (`RouteCalculationExecutor`)**: Manages concurrent execution of tasks using a fixed number of threads, optimizing resource usage and enhancing performance.
 
 
 # Maven Commands
