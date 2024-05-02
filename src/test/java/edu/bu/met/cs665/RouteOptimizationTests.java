@@ -1,26 +1,21 @@
 /**
- * Name: Mukul Jangid
- * Course: CS-665 Software Designs & Patterns
- * Date: 04/12/2024
- * File Name: DriverNotificationTest.java
- * Description: Test cases for the assignment.
+ * Name: Mukul Jangid Course: CS-665 Software Designs & Patterns Date: 04/12/2024 File Name:
+ * DriverNotificationTest.java Description: Test cases for the assignment.
  */
-
 package edu.bu.met.cs665;
 
-import org.jgrapht.Graph;
-import org.jgrapht.graph.DefaultWeightedEdge;
-import org.junit.Test;
-import org.mockito.Mockito;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.StringReader;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.junit.Test;
+import org.mockito.Mockito;
 
 public class RouteOptimizationTests {
 
@@ -95,8 +90,4 @@ public class RouteOptimizationTests {
     assertEquals(1.0, graph.getEdgeWeight(graph.getEdge(1, 2)), 0.01);
     assertEquals(2.0, graph.getEdgeWeight(graph.getEdge(2, 3)), 0.01);
   }
-
-
 }
-
-
