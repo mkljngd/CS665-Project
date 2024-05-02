@@ -4,6 +4,12 @@ import matplotlib.pyplot as plt
 
 
 def parse_graph(file_path):
+    """
+    Parses a tab-delimited graph file into a dictionary where each key is a node and its value is a list of connected nodes.
+
+    :param file_path: str - Path to the graph file.
+    :return: dict - A dictionary representing the adjacency list of the graph.
+    """
     graph = {}
     with open(file_path, "r") as file:
         reader = csv.reader(file, delimiter="\t")
@@ -19,12 +25,23 @@ def parse_graph(file_path):
 
 
 def extract_nodes(path):
-    # Extract nodes from the path string like "Path: 0 -> 469 -> 380 -> 379 -> 180"
-    path = path.strip("Path: ").split(" -> ")
-    return path
+    """
+    Extracts nodes from a path string formatted as "Path: node1 -> node2 -> ...".
+
+    :param path: str - Path string to extract nodes from.
+    :return: list - List of nodes as strings.
+    """
+    return path.strip("Path: ").split(" -> ")
 
 
 def get_subgraph_and_connections(graph, nodes):
+    """
+    Extracts a subgraph and additional connections from a graph based on a list of nodes.
+
+    :param graph: dict - The full graph represented as an adjacency list.
+    :param nodes: list - List of nodes for which the subgraph is extracted.
+    :return: tuple - A tuple containing two dictionaries: subgraph and additional_edges.
+    """
     subgraph = {}
     additional_edges = {}
     for node in nodes:
@@ -42,12 +59,25 @@ def get_subgraph_and_connections(graph, nodes):
 
 
 def print_graph(subgraph):
+    """
+    Prints the subgraph as adjacency list.
+
+    :param subgraph: dict - The subgraph to print.
+    """
     for from_node, to_nodes in subgraph.items():
         for to_node in to_nodes:
             print(f"{from_node} -> {to_node}")
 
 
 def visualize_subgraph(subgraph, additional_edges, nodes_in_path, simplify=False):
+    """
+    Visualizes the subgraph using NetworkX and Matplotlib, highlighting the main path and additional edges differently.
+
+    :param subgraph: dict - The subgraph to visualize.
+    :param additional_edges: dict - Additional edges to be visualized differently.
+    :param nodes_in_path: list - List of nodes in the main path to highlight.
+    :param simplify: bool - Whether to simplify the visualization (default is False).
+    """
     G = nx.DiGraph()
     # Add main path edges with unidirectional arrows
     for from_node, to_nodes in subgraph.items():
@@ -87,6 +117,9 @@ def visualize_subgraph(subgraph, additional_edges, nodes_in_path, simplify=False
 
 
 if __name__ == "__main__":
+    """
+    Main execution block: Parses a graph, reads paths from a file, and visualizes each path with its context within the graph.
+    """
     graph = parse_graph("roadNet-CA.txt")  # Ensure to use the correct file path
     with open("output.txt", "r") as file:
         lines = file.readlines()
