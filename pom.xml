@@ -11,10 +11,10 @@ file conforms to. -->
     <modelVersion>4.0.0</modelVersion>
     <!-- This is the Maven groupId of the project, which identifies the project uniquely across all
     projects. -->
-    <groupId>edu.bu.cs665</groupId>
+    <groupId>edu.bu.met.cs665</groupId>
     <!-- This specifies the name of the project's artifact (e.g., the compiled output file or
     library) that will be created when the project is built. -->
-    <artifactId>JavaProjectTemplate</artifactId>
+    <artifactId>route-optimization</artifactId>
     <!-- The version of the project -->
     <version>1.0-SNAPSHOT</version>
     <!-- This line specifies the packaging type of the project, which in this case is "jar" (Java
@@ -22,7 +22,7 @@ file conforms to. -->
     <packaging>jar</packaging>
     <!-- This line sets the name of the Maven project to "JavaProjectTemplate". It can be used to
     give the project a more descriptive name than just the artifact ID. -->
-    <name>JavaProjectTemplate</name>
+    <name>Route Optimization Application</name>
     <!-- Specifies the URL where information about the project can be found -->
     <url>http://maven.apache.org</url>
     <!-- The <properties> element is used to define project-wide properties.
@@ -138,8 +138,7 @@ file conforms to. -->
                 <configuration>
                     <includeProjectDependencies>true</includeProjectDependencies>
                     <includePluginDependencies>true</includePluginDependencies>
-                    <killAfter>-1</killAfter>
-                    <mainClass>edu.bu.met.cs665.Main</mainClass>
+                    <mainClass>edu.bu.met.cs665.RouteOptimizationApp</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
@@ -148,7 +147,7 @@ file conforms to. -->
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>fully.qualified.MainClass</mainClass>
+                            <mainClass>edu.bu.met.cs665.RouteOptimizationApp</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
